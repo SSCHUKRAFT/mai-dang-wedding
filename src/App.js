@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Home, Rsvp, Timeline, Travel, Party } from './pages'
 import './App.css';
+import Sidebar from './components/Sidebar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="App">
+    <BrowserRouter>
+      <Sidebar className="side-bar">
+        <Routes>
+          <Route path="/"element={<Home />} />
+          <Route path="/rsvp"element={<Rsvp />} />
+          <Route path="/timeline"element={<Timeline />} />
+          <Route path="/travel"element={<Travel />} />
+          <Route path="/weddingParty"element={<Party />} />
+        </Routes>
+      </Sidebar>
+    </BrowserRouter>
+  </div>
+);
 
 export default App;
