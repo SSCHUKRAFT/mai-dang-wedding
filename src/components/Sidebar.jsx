@@ -6,6 +6,10 @@ import { BiNotepad, BiTimeFive, BiParty } from "react-icons/bi";
 import { ImAirplane } from "react-icons/im";
 import { NavLink } from 'react-router-dom';
 
+/**
+ * TODO: refactor sidebar's style
+ */
+
 const Sidebar = ({children}) => {
   const menuItem = [
     {
