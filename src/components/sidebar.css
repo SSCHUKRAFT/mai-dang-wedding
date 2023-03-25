@@ -1,5 +1,27 @@
 .container {
     display: flex;
+    font-family: 'Abel';
+}
+
+.menu-container {
+    position: absolute;
+    top: 2%;
+    left: 4%;
+    z-index: 2;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: fit-content;
+    height: auto;
+    background-color: #00000083;
+    padding: 2%;
+    border-radius: 15px;
+}
+
+.menu-txt {
+    font-size: 1.25em;
+    padding-right: 8%;
 }
 
 .content {
@@ -11,6 +33,7 @@
     height: 100vh;
     background: #ffd3daa4;
     color: #FFFFFF;
+    position: absolute;
 }
 
 .link {
@@ -27,8 +50,6 @@
 
 .link-text {
     padding-left: 10px;
-    
-    font-family: 'Abel';
     font-style: normal;
     font-weight: 400;
     font-size: 26px;

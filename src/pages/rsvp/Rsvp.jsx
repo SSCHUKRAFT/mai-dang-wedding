@@ -1,9 +1,9 @@
 import React from 'react';
 import './rsvp.css';
 
-const Rsvp = () => (
+const Rsvp = ({sidebarOpen}) => (
   <div className="rsvp">
-    Rsvp
+    {sidebarOpen ? <div>RSVP</div> : null}
   </div>
 )
 

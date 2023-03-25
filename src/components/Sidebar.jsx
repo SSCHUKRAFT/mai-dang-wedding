@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './sidebar.css';
 import { FaBars } from "react-icons/fa";
+import Icon from "../assets/sidebar-ring.svg"
 import { AiFillHome } from "react-icons/ai";
 import { BiNotepad, BiTimeFive, BiParty } from "react-icons/bi";
 import { ImAirplane } from "react-icons/im";
 import { NavLink } from 'react-router-dom';
 
 /**
- * TODO: refactor sidebar's style
+ * TODO: refactor sidebar's style.
+ * MAYBE: put all of sidebar into 
  */
 
-const Sidebar = ({children}) => {
+function Sidebar({children, sidebarOpen, setSidebarOpen}) {
   const menuItem = [
     {
       path:"/",
@@ -38,23 +40,25 @@ const Sidebar = ({children}) => {
       icon:<BiParty />
     }
   ]
-  
+
   return (
     <div className="container">
+      <div className="menu-container" onClick={() => setSidebarOpen(!sidebarOpen)}>
+        <img src={Icon} alt="ring-icon" width={50} height={35} />
+        <div className="menu-txt">Menu</div>
+      </div>
       <div className="sidebar">
-        <div className="bars">
-          <FaBars />
-        </div>
-        {
+        {sidebarOpen ?
           menuItem.map((item, index)=>(
-            <NavLink to={item.path} key={index} className="link" activeclassName="active">
-              <div className="icon">{item.icon}</div>
-              <div className="link-text">{item.name}</div>
+            <NavLink to={item.path} key={index} className="link">
+            <div className="icon">{item.icon}</div>
+            <div className="link-text">{item.name}</div>
             </NavLink>
           ))
+          : null
         }
       </div>
-      <content>{children}</content>
+      {children}
     </div>
   );
 };
