@@ -1,60 +1,36 @@
-.home-slideshow {
-    position: absolute;
-    left: 0;
-    right: 0;
+.image-carousel {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.carousel-image {
+    opacity: 0;
+    transition: opacity 0.75s ease-in-out;
+    width: 100%;
+    grid-column-start: 1;
+    grid-row-start: 1;
     z-index: -1;
 }
 
-
-.slide {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+.carousel-image.active {
+    opacity: 1;
 }
 
-.image-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.image-one {
-    position: absolute;
-    top: 0;
-    left: 25%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.carousel-image.slide1 {
     scale: 150%;
 }
 
-.image-two {
-    position: absolute;
-    top: 5%;
-    left: 10%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    scale: 125%;
+.carousel-image.slide2 {
+    scale: 140%;
 }
 
-.image-three {
-    position: absolute;
-    top: 10%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    scale: 125%;
+.carousel-image.slide3 {
+    scale: 140%;
+    margin-top: 20%
 }
 
-.image-four {
-    position: absolute;
-    top: 10%;
-    left: -15%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    scale: 225%;
+.carousel-image.slide4 {
+    scale: 160%;
 }

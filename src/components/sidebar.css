@@ -1,6 +1,8 @@
 .container {
     display: flex;
     font-family: 'Abel';
+    height: 100%;
+    width: 100%;
 }
 
 .menu-container {
