@@ -9,7 +9,8 @@ html, body, :root {
 }
 
 .App {
-  overflow-x: hidden;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 .side-bar {

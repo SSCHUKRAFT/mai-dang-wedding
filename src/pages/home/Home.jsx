@@ -38,7 +38,11 @@ const images = [
 
 const Home = () => (
   <div className="home">
+    <div className="dark-filter"></div>
     <HomeSlideshow images={images}/>
+    <div className="home-txt">
+
+    </div>
   </div>
 )
 
