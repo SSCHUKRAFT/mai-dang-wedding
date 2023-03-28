@@ -36,6 +36,7 @@
     background: #ffd3daa4;
     color: #FFFFFF;
     position: absolute;
+    z-index: 998;
 }
 
 .link {

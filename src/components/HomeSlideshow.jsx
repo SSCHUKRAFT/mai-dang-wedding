@@ -15,18 +15,20 @@ const HomeSlideshow = ({ images }) => {
   }, [images]);
 
   return (
-    <div className="image-carousel">
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={image.src}
-          alt={image.alt || `Image ${index}`}
-          className={`carousel-image ${
-            index === currentImageIndex ? "active" : ""
-          } ${image.className || ""}`}
-          style={image.style || {}}
-        />
-      ))}
+    <div className="carousel-container">
+      <div className="image-carousel">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image.src}
+            alt={image.alt || `Image ${index}`}
+            className={`carousel-image ${
+              index === currentImageIndex ? "active" : ""
+            } ${image.className || ""}`}
+            style={image.style || {}}
+          />
+        ))}
+      </div>
     </div>
   );
 };

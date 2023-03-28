@@ -16,3 +16,13 @@ html, body, :root {
 .side-bar {
   position:static;
 }
+
+@font-face {
+  font-family: Abel;
+  src: url(./assets/Abel-Regular.ttf);
+}
+
+@font-face {
+  font-family: AlexBrush;
+  src: url(./assets/AlexBrush-Regular.ttf);
+}
