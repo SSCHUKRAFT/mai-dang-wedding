@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group'
 import './home.css';
 import Horizontal1 from '../../assets/home-photos/horizontal1.jpg'
 import Horizontal2 from '../../assets/home-photos/horizontal2.jpg'
@@ -7,12 +8,6 @@ import Vertical2 from '../../assets/home-photos/vertical2.jpg'
 import HomeSlideshow from '../../components/HomeSlideshow';
 import HomeCountdown from '../../components/HomeCountdown';
 
-/**
- * TODO: Add "float-in" animations to components. Didn't seem like there was a lot of documentation on float in,
- * so may need to just fade them in instead.
- * 
- * 
-*/
 const images = [
   {
     src: Horizontal1,
@@ -36,18 +31,41 @@ const images = [
   }
 ]
 
-const Home = () => (
-  <div className="home">
-    <div className="dark-filter"></div>
-    <HomeSlideshow images={images}/>
-    <div className="home-txt">
-      <div className="home-text-wrapper">
-        <div className="home-txt-title">Anh Mai<br/>&<br/>Vu Dang</div>
-        <div className="home-txt-date">07 . 29 . 2023</div>
+const Home = () => {
+  const [homeTxtFadeIn, setHomeTxtFadeIn] = useState(false);
+  const [countdownFadeIn, setCountdownFadeIn] = useState(false);
+
+  const handleSlideshowEntered = () => {
+    setHomeTxtFadeIn(true);
+  }
+
+  const handleHomeTextEntered = () => {
+    setCountdownFadeIn(true);
+  }
+
+  return (
+    <div className="home">
+      <div className="dark-filter"></div>
+      <CSSTransition in={true} appear={true} timeout={1000} classNames="fade" onEntered={handleSlideshowEntered}>
+        <div className="home-slideshow-wrapper">
+          <HomeSlideshow images={images}/>
+        </div>
+      </CSSTransition>
+      <div className="home-txt">
+        <CSSTransition in={homeTxtFadeIn} appear={true} timeout={2000} classNames="fade" onEntered={handleHomeTextEntered}>
+          <div className="home-text-wrapper">
+            <div className="home-txt-title">Anh Mai<br/>&<br/>Vu Dang</div>
+            <div className="home-txt-date">07 . 29 . 2023</div>
+          </div>
+        </CSSTransition>
+        <CSSTransition in={countdownFadeIn} appear={true} timeout={3000} classNames="fade">
+          <div className="countdown-wrapper">
+            <HomeCountdown targetDate={new Date('August 29, 2023 00:00:00')} />
+          </div>
+        </CSSTransition>
       </div>
-      <HomeCountdown targetDate={new Date('August 29, 2023 00:00:00')} />
     </div>
-  </div>
-)
+  );
+}
 
 export default Home;

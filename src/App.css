@@ -26,3 +26,8 @@ html, body, :root {
   font-family: AlexBrush;
   src: url(./assets/AlexBrush-Regular.ttf);
 }
+
+@font-face {
+  font-family: Overpass;
+  src: url(./assets/Overpass.ttf);
+}
