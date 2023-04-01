@@ -3,8 +3,9 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    font-family: Overpass;
 }
 
 .rsvp-title {
@@ -12,10 +13,26 @@
     width: 70%;
     text-align: center;
     font-size: 48px;
-    font-family: Overpass;
     font-weight: 400;
     color: white;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.255);
     text-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
     z-index: 1;
+}
+
+.rsvp-form-container {
+    width: 90%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.103);
+    z-index: 1;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-apart;
+    flex-direction: column;
+}
+
+.rsvp-form {
+    height: 100%;
+    width: 100%;
 }
