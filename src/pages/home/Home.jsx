@@ -60,7 +60,7 @@ const Home = () => {
         </CSSTransition>
         <CSSTransition in={countdownFadeIn} appear={true} timeout={3000} classNames="fade">
           <div className="countdown-wrapper">
-            <HomeCountdown targetDate={new Date('August 29, 2023 00:00:00')} />
+            <HomeCountdown targetDate={new Date('July 29, 2023 00:00:00')} />
           </div>
         </CSSTransition>
       </div>

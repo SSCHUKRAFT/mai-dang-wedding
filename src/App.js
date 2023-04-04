@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  
   return (
     <div className="App">
       <BrowserRouter>
