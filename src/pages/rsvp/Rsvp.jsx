@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './rsvp.css';
 import Background from '../../assets/rsvp-bg.jpg'
 import RsvpForm from '../../components/RsvpForm';
