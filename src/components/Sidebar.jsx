@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './sidebar.css';
-import { FaBars } from "react-icons/fa";
 import Icon from "../assets/sidebar-ring.svg"
 import { AiFillHome } from "react-icons/ai";
 import { BiNotepad, BiTimeFive, BiParty } from "react-icons/bi";
