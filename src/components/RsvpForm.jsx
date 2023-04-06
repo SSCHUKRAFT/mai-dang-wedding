@@ -6,12 +6,17 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import emailjs from "@emailjs/browser";
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from '@mui/material/Radio';
 
 function RsvpForm() {
   const [numGuests, setNumGuests] = useState(1);
   const [firstNames, setFirstNames] = useState(Array(numGuests).fill(""));
   const [lastNames, setLastNames] = useState(Array(numGuests).fill(""));
   const [foodSelections, setFoodSelections] = useState(Array(numGuests).fill(""));
+  const [allergyRadios, setAllergyRadios] = useState(Array(numGuests).fill(true))
+  const [allergies, setAllergies] = useState(Array(numGuests).fill(""))
 
   function handleNumGuestsChange(event) {
     const newNumGuests = parseInt(event.target.value);
@@ -39,6 +44,22 @@ function RsvpForm() {
       }
       return newLastNames.slice(0, newNumGuests);
     });
+
+    setAllergyRadios(prevAllergyRadios => {
+      const newAllergyRadios = [...prevAllergyRadios];
+      while (newAllergyRadios.length < newNumGuests) {
+        newAllergyRadios.push(true);
+      }
+      return newAllergyRadios.slice(0, newNumGuests);
+    });
+
+    setAllergies(prevAllergies => {
+      const newAllergies = [...prevAllergies];
+      while (newAllergies.length < newNumGuests) {
+        newAllergies.push("");
+      }
+      return newAllergies.slice(0, newNumGuests);
+    });
   }
 
   const handleFoodSelectionChange = (event, index) => {
@@ -59,14 +80,32 @@ function RsvpForm() {
     setLastNames(newLastNames);
   }
 
+  const handleAllergyRadioChange = (event, index) => {
+    const newAllergyRadios = [...allergyRadios];
+    let booleanResp;
+    if (event.target.value === "true"){
+      booleanResp = true;
+    }else {
+      booleanResp = false;
+    }
+    newAllergyRadios[index] = booleanResp;
+    setAllergyRadios(newAllergyRadios);
+  }
+
+  const handleAllergyChange = (event, index) => {
+    const newAllergies = [...allergies];
+    newAllergies[index] = event.target.value;
+    setAllergies(newAllergies);
+  }
+
   function handleFormSubmit(event) {
     event.preventDefault();
 
     const templateParams = {
       guestCount: numGuests,
       guestList: Array(numGuests).fill().map((_, i) => (
-        `Guest ${i + 1}: ${firstNames[i]} ${lastNames[i]}, ${foodSelections[i]}`
-      )).join('\n')
+        `Guest ${i + 1}: ${firstNames[i]} ${lastNames[i]}, ${foodSelections[i]}, Food allergies: ${allergies[i]}`
+      )).join('\n\n')
     };
 
     emailjs.send('service_yuq2dkl', 'template_zj5oroc', templateParams, 'euCgll_J6Ylx_2x2d')
@@ -105,7 +144,8 @@ function RsvpForm() {
                     variant="outlined"
                     size="small" 
                     sx={{ width: '100%' }} 
-                    onChange={(event) => handleFirstNameChange(event, i)} />
+                    onChange={(event) => handleFirstNameChange(event, i)}
+                  />
                 </div>
                 <div className="name-field">
                   <TextField 
@@ -113,7 +153,8 @@ function RsvpForm() {
                     variant="outlined" 
                     size="small" 
                     sx={{ width: '100%' }} 
-                    onChange={(event) => handleLastNameChange(event, i)} />
+                    onChange={(event) => handleLastNameChange(event, i)} 
+                  />
                 </div>
               </div>
                 <div className="food-selection">
@@ -134,6 +175,30 @@ function RsvpForm() {
                         <MenuItem value="vegetarian">Vegetarian</MenuItem>
                       </Select>
                     </FormControl>  
+                  </div>
+                </div>
+                <div className="allergy-selection">
+                  <div className="allergy-radio">
+                    <FormControl>
+                      <div className="allergy-radio-txt">Any food allergies?</div>
+                      <RadioGroup
+                        value={allergyRadios[i]}
+                        onChange={(event) => handleAllergyRadioChange(event, i)}
+                      >
+                        <FormControlLabel value={"true"} control={<Radio size="small" />} label="No" />
+                        <FormControlLabel value={"false"} control={<Radio size="small" />} label="Yes" />
+                      </RadioGroup>
+                    </FormControl>
+                  </div>
+                  <div className="allergy-input">
+                    <TextField
+                      label="Allergy"
+                      variant="outlined"
+                      size="small" 
+                      sx={{ width: '100%' }} 
+                      disabled={allergyRadios[i]}
+                      onChange={(event) => handleAllergyChange(event, i)}
+                    />
                   </div>
                 </div>
               <div className="divider" />

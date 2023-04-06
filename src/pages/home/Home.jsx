@@ -45,7 +45,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="dark-filter"></div>
+      <div className="dark-filter" />
       <CSSTransition in={true} appear={true} timeout={1000} classNames="fade" onEntered={handleSlideshowEntered}>
         <div className="home-slideshow-wrapper">
           <HomeSlideshow images={images}/>
