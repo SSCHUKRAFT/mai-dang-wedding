@@ -5,18 +5,18 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PartyMember from '../../components/PartyMember';
 
-import Trang from '../../assets/wedding-party-photos/trang_circle.png';
-import Linh from '../../assets/wedding-party-photos/linh_circle.png';
-import Lilly from '../../assets/wedding-party-photos/lilly_circle.png';
-import Bich from '../../assets/wedding-party-photos/bich_circle.png';
-import Quyen from '../../assets/wedding-party-photos/quyen_circle.png';
-import Katelyn from '../../assets/wedding-party-photos/katelyn_circle.png';
-import Yilmaz from '../../assets/wedding-party-photos/yilmaz_circle.png';
-import Douglas from '../../assets/wedding-party-photos/douglas_circle.png';
-import Daniel from '../../assets/wedding-party-photos/daniel_circle.png';
-import Quinton from '../../assets/wedding-party-photos/quinton_circle.png';
-import Andy from '../../assets/wedding-party-photos/andy_circle.png';
-import Christopher from '../../assets/wedding-party-photos/christopher_circle.png';
+import Trang from '../../assets/wedding-party-photos/trang-circle.png';
+import Linh from '../../assets/wedding-party-photos/linh-circle.png';
+import Lilly from '../../assets/wedding-party-photos/lilly-circle.png';
+import Bich from '../../assets/wedding-party-photos/bich-circle.png';
+import Quyen from '../../assets/wedding-party-photos/quyen-circle.png';
+import Katelyn from '../../assets/wedding-party-photos/katelyn-circle.png';
+import Yilmaz from '../../assets/wedding-party-photos/yilmaz-circle.png';
+import Douglas from '../../assets/wedding-party-photos/douglas-circle.png';
+import Daniel from '../../assets/wedding-party-photos/daniel-circle.png';
+import Quinton from '../../assets/wedding-party-photos/quinton-circle.png';
+import Andy from '../../assets/wedding-party-photos/andy-circle.png';
+import Christopher from '../../assets/wedding-party-photos/christopher-circle.png';
 
 const Party = () => {
   const [party, setParty] = useState(0);
