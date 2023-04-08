@@ -1,6 +1,6 @@
 import React from 'react';
 import './rsvp.css';
-import Background from '../../assets/rsvp-bg.jpg'
+import Background from '../../assets/page-backgrounds/rsvp-bg.jpg'
 import RsvpForm from '../../components/RsvpForm';
 
 const Rsvp = () => {

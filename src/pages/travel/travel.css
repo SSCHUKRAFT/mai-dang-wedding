@@ -1,0 +1,15 @@
+.travel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Overpass;
+    text-align: center;
+}
+
+.travel-title {
+    text-decoration: underline;
+    font-size: 34px;
+    padding-top: 15%;
+}

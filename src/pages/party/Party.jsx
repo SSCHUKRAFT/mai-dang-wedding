@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './party.css';
-import Background from '../../assets/rsvp-bg.jpg'
+import Background from '../../assets/page-backgrounds/rsvp-bg.jpg'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PartyMember from '../../components/PartyMember';
@@ -57,7 +57,14 @@ const Party = () => {
               <PartyMember image={Katelyn} name="Katelyn Dang" />
             </div>
             :
-            <div>Hi</div>
+            <div className="party-members">
+              <PartyMember image={Yilmaz} name="Yilmaz Yoruk" />
+              <PartyMember image={Douglas} name="Douglas Dang" />
+              <PartyMember image={Daniel} name="Daniel Le" />
+              <PartyMember image={Quinton} name="Quinton Dang" />
+              <PartyMember image={Andy} name="Andy Dao" />
+              <PartyMember image={Christopher} name="Chris Kieliszak" />
+            </div>
           }
         </div>
       </div>
