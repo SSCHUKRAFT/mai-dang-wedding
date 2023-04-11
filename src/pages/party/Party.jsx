@@ -31,7 +31,7 @@ const Party = () => {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     width: '100vw',
-    height: '100%',
+    height: '100vh',
     scale: '1',
     position: 'absolute'
   };
@@ -49,7 +49,7 @@ const Party = () => {
           </Tabs>
           {party === 0 ? 
             <div className="party-members">
-              <PartyMember image={Trang} name="Trang Mai" />
+              <PartyMember image={Trang} name="Trang Mai" role="Maid of Honor" />
               <PartyMember image={Linh} name="Linh Mai" />
               <PartyMember image={Lilly} name="Lilly Nguyen" />
               <PartyMember image={Bich} name="Bich Pham" />
@@ -58,7 +58,7 @@ const Party = () => {
             </div>
             :
             <div className="party-members">
-              <PartyMember image={Yilmaz} name="Yilmaz Yoruk" />
+              <PartyMember image={Yilmaz} name="Yilmaz Yoruk" role="Best Man" />
               <PartyMember image={Douglas} name="Douglas Dang" />
               <PartyMember image={Daniel} name="Daniel Le" />
               <PartyMember image={Quinton} name="Quinton Dang" />

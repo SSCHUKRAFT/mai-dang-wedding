@@ -16,7 +16,7 @@ function RsvpForm() {
   const [lastNames, setLastNames] = useState(Array(numGuests).fill(""));
   const [foodSelections, setFoodSelections] = useState(Array(numGuests).fill(""));
   const [allergyRadios, setAllergyRadios] = useState(Array(numGuests).fill(true))
-  const [allergies, setAllergies] = useState(Array(numGuests).fill(""))
+  const [allergies, setAllergies] = useState(Array(numGuests).fill(""));
 
   function handleNumGuestsChange(event) {
     const newNumGuests = parseInt(event.target.value);
@@ -101,6 +101,12 @@ function RsvpForm() {
   function handleFormSubmit(event) {
     event.preventDefault();
 
+    // Check if any required fields are null
+    if (firstNames.includes("") || lastNames.includes("") || foodSelections.includes("")) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
     const templateParams = {
       guestCount: numGuests,
       guestList: Array(numGuests).fill().map((_, i) => (
@@ -108,10 +114,11 @@ function RsvpForm() {
       )).join('\n\n')
     };
 
+
     emailjs.send('service_yuq2dkl', 'template_zj5oroc', templateParams, 'euCgll_J6Ylx_2x2d')
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        alert('RSVP submitted successfully!');
+        alert("Your RSVP was successfully received. We can't wait to see you there!" );
       }, (error) => {
         console.log('FAILED...', error);
         alert('Failed to submit RSVP. Please try again.');

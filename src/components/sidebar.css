@@ -6,16 +6,16 @@
 }
 
 .menu-container {
-    position: absolute;
+    position: fixed;
     top: 2%;
     left: 4%;
+    height: 5vh;
     z-index: 999;
     color: #FFFFFF;
     display: flex;
     flex-direction: row;
     align-items: center;
-    min-width: fit-content;
-    height: auto;
+    
     background-color: #00000083;
     padding: 2%;
     border-radius: 15px;

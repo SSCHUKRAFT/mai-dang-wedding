@@ -6,7 +6,10 @@ export default function PartyMember(props) {
   return (
     <div className="party-member-container">
       <img src={props.image} />
-      <div className="party-member-txt">{props.name}</div>
+      <div className="party-member-txt">
+        {props.name}
+        {props.role != null ? <div>{props.role}</div> : null}
+      </div>
     </div>
   )
 }

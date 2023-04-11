@@ -3,6 +3,8 @@
     min-height: 100vh;
     font-family: Overpass;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-content: center;
     color: black;
     text-align: center;
