@@ -29,12 +29,12 @@ const Travel = () => {
           <div className="airport-title-txt">Airports</div>
           <div className="airports">
             <TravelLocation 
-              name="Greater Rochester International Airport" 
+              name="Greater Rochester<br>International Airport"
               map="https://www.google.com/maps/place/Greater+Rochester+International+Airport/@43.122721,-77.6702183,15.5z/data=!4m6!3m5!1s0x89d14cb73768decb:0xb43d4e6684963fa9!8m2!3d43.1225229!4d-77.6665722!16zL20vMDFzem4z"
               image={RocAirport}
             />
             <TravelLocation 
-              name="Buffalo Niagara International Airport" 
+              name="Buffalo Niagara<br>International Airport"
               map="https://www.google.com/maps/place/Buffalo+Niagara+International+Airport/@42.9396584,-78.7359829,15.25z/data=!4m6!3m5!1s0x89d374c8ccbe865d:0xc0e27200bdc16a88!8m2!3d42.9397059!4d-78.7295067!16zL20vMDFxaDBy" 
               image={BufAirport}
             />
