@@ -12,7 +12,7 @@ import Bich from '../../assets/wedding-party-photos/bich-circle.png';
 import Quyen from '../../assets/wedding-party-photos/quyen-circle.png';
 import Katelyn from '../../assets/wedding-party-photos/katelyn-circle.png';
 import Yilmaz from '../../assets/wedding-party-photos/yilmaz-circle.png';
-import Douglas from '../../assets/wedding-party-photos/douglas-circle.png';
+import Minh from '../../assets/wedding-party-photos/minh-circle.png';
 import Daniel from '../../assets/wedding-party-photos/daniel-circle.png';
 import Quinton from '../../assets/wedding-party-photos/quinton-circle.png';
 import Andy from '../../assets/wedding-party-photos/andy-circle.png';
@@ -59,7 +59,7 @@ const Party = () => {
             :
             <div className="party-members">
               <PartyMember image={Yilmaz} name="Yilmaz Yoruk" role="Best Man" />
-              <PartyMember image={Douglas} name="Douglas Dang" />
+              <PartyMember image={Minh} name="Minh Huynh" />
               <PartyMember image={Daniel} name="Daniel Le" />
               <PartyMember image={Quinton} name="Quinton Dang" />
               <PartyMember image={Andy} name="Andy Dao" />

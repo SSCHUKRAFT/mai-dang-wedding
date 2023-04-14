@@ -5,36 +5,33 @@
     width: 100%;
 }
 
+.sidebar-open-dark-filter {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.753);
+    z-index: 997;
+}
+
 .menu-container {
     position: fixed;
     top: 2%;
     left: 4%;
-    height: 7vh;
-    width: 27vw;
+    height: 5vh;
     z-index: 999;
     color: #FFFFFF;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    background-color: #00000083;
-    border-radius: 15px;
-}
-
-.menu-content {
-    position: absolute;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    color: white;
     
+    background-color: #00000083;
     padding: 2%;
+    border-radius: 15px;
 }
 
 .menu-txt {
     font-size: 1.25em;
     padding-right: 8%;
-    text-align: right;
 }
 
 .content {
@@ -44,22 +41,35 @@
 
 .sidebar {
     height: 100vh;
+    width: 40%;
     background: #ffd3daa4;
     color: #FFFFFF;
     position: absolute;
     z-index: 998;
+    padding-top: 30%;
 }
 
 .link {
     display: flex;
     align-items: center;
-    padding-bottom: 20px;
+    padding: 5%;
+    padding-bottom: 20%;
+    color: #3F3F3F;
+}
+
+.active-link {
+    display: flex;
+    align-items: center;
+    padding: 5%;
+    padding-bottom: 20%;
+    color: white;
+    text-decoration: underline;
 }
 
 .icon {
-    color: #000000;
-    size: 50px;
-    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .link-text {
@@ -68,52 +78,7 @@
     font-weight: 400;
     font-size: 26px;
     line-height: 25px;
-    text-decoration-line: underline;
-
-    color: #FFFFFF;
 
     -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.255);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.menu-container.animate {
-    animation: scale-up-center 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-    transform-origin: 4% 2%;
-}
-
-.menu-container.animate-down {
-    animation-name: scale-down;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-    transform-origin: calc(4% + 12.5vw) calc(2% + 2.5vh);
-}
-
-.menu-container.scaled-up {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 999;
-    border-radius: 0;
-}
-
-@keyframes scale-up-center {
-    0% {
-        transform: scale(0.25, 0.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes scale-down {
-    from {
-        transform: scale(1);
-        width: 100vw;
-        height: 100vh;
-    }
-    to {
-        transform: scale(0.25, 0.05);
-    }
 }

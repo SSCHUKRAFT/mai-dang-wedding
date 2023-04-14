@@ -1,81 +1,77 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './sidebar.css';
 import Icon from "../assets/sidebar-ring.svg"
 import { AiFillHome } from "react-icons/ai";
 import { BiNotepad, BiTimeFive, BiParty } from "react-icons/bi";
 import { ImAirplane } from "react-icons/im";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import Slide from '@mui/material/Slide';
+import Fade from '@mui/material/Fade';
+
+/**
+ * TODO: refactor sidebar's style.
+ * MAYBE: put all of sidebar into 
+ */
 
 function Sidebar({children, sidebarOpen, setSidebarOpen}) {
   const menuItem = [
     {
       path:"/",
       name:"Home",
-      icon:<AiFillHome />
+      icon:<AiFillHome size={28}/>
     },
     {
       path:"/rsvp",
       name:"RSVP",
-      icon:<BiNotepad />
+      icon:<BiNotepad size={28}/>
     },
     {
       path:"/timeline",
       name:"Timeline",
-      icon:<BiTimeFive />
+      icon:<BiTimeFive size={28}/>
     },
     {
       path:"/travel",
       name:"Travel",
-      icon:<ImAirplane />
+      icon:<ImAirplane size={28}/>
     },
     {
       path:"/weddingParty",
-      name:"Wedding Party",
-      icon:<BiParty />
+      name:"Party",
+      icon:<BiParty size={30}/>
     }
   ];
 
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isScaledUp, setIsScaledUp] = useState(false);
-  const [isAnimatingDown, setIsAnimatingDown] = React.useState(false);
-
-  function handleSidebarChange() {
-    if (isScaledUp) {
-      setIsAnimatingDown(true);
-      setTimeout(() => {
-        setIsScaledUp(false);
-        setIsAnimatingDown(false);
-        setSidebarOpen(!sidebarOpen);
-      }, 300); // the same duration as the animation
-    } else {
-      setIsAnimating(true);
-      setIsScaledUp(true);
-      setSidebarOpen(!sidebarOpen);
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 300); // the same duration as the animation
-    }
+  function handleMenuClick() {
+    setSidebarOpen(!sidebarOpen)
   }
+
+  const location = useLocation(); // Get the current location object from the router
 
   return (
     <div className="container">
-      <div className={`menu-container ${isAnimating ? 'animate' : ''} ${isScaledUp ? 'scaled-up' : ''} ${isAnimatingDown ? 'animate-down' : ''}`} onClick={handleSidebarChange}>
-        <div className="menu-content">
-          <img src={Icon} alt="ring-icon" width={50} height={35} />
-          <div className="menu-txt">Menu</div>
+      <Fade in={sidebarOpen}>
+        <div className="sidebar-open-dark-filter" onClick={handleMenuClick} />
+      </Fade>
+      <div className="menu-container" onClick={handleMenuClick}>
+        <img src={Icon} alt="ring-icon" width={50} height={35} />
+        <div className="menu-txt">Menu</div>
+      </div> 
+      <Slide direction="right" in={sidebarOpen} mountOnEnter unmountOnExit>
+        <div className="sidebar">
+          {menuItem.map((item, index)=>(
+              <NavLink 
+                to={item.path} 
+                key={index} 
+                className={location.pathname === item.path ? "active-link" : "link"}
+                onClick={handleMenuClick}
+              >
+                <div className="icon">{item.icon}</div>
+                <div className="link-text">{item.name}</div>
+              </NavLink>
+            ))}
         </div>
-      </div>
-      <div className="sidebar">
-        {sidebarOpen ?
-          menuItem.map((item, index)=>(
-            <NavLink to={item.path} key={index} className="link" onClick={handleSidebarChange}>
-              <div className="icon">{item.icon}</div>
-              <div className="link-text">{item.name}</div>
-            </NavLink>
-          ))
-          : null
-        }
-      </div>
+      </Slide>
       {children}
     </div>
   );

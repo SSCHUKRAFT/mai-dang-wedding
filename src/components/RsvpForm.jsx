@@ -9,6 +9,7 @@ import emailjs from "@emailjs/browser";
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from '@mui/material/Radio';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function RsvpForm() {
   const [numGuests, setNumGuests] = useState(1);
@@ -17,6 +18,7 @@ function RsvpForm() {
   const [foodSelections, setFoodSelections] = useState(Array(numGuests).fill(""));
   const [allergyRadios, setAllergyRadios] = useState(Array(numGuests).fill(true))
   const [allergies, setAllergies] = useState(Array(numGuests).fill(""));
+  const [loading, setLoading] = useState(false);
 
   function handleNumGuestsChange(event) {
     const newNumGuests = parseInt(event.target.value);
@@ -100,10 +102,12 @@ function RsvpForm() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
+    setLoading(true);
 
     // Check if any required fields are null
     if (firstNames.includes("") || lastNames.includes("") || foodSelections.includes("")) {
       alert("Please fill in all required fields.");
+      setLoading(false);
       return;
     }
 
@@ -122,6 +126,9 @@ function RsvpForm() {
       }, (error) => {
         console.log('FAILED...', error);
         alert('Failed to submit RSVP. Please try again.');
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }
 
@@ -212,7 +219,9 @@ function RsvpForm() {
             </div>
           </div>
         ))}
-        <button onClick={handleFormSubmit}>Submit</button>
+        <button onClick={handleFormSubmit}>
+          {loading ? <CircularProgress size={20}/> : "Submit"}
+        </button>
       </div>
     </div>
   );
