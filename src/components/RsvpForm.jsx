@@ -4,7 +4,6 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 import emailjs from "@emailjs/browser";
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -15,7 +14,6 @@ function RsvpForm() {
   const [numGuests, setNumGuests] = useState(1);
   const [firstNames, setFirstNames] = useState(Array(numGuests).fill(""));
   const [lastNames, setLastNames] = useState(Array(numGuests).fill(""));
-  const [foodSelections, setFoodSelections] = useState(Array(numGuests).fill(""));
   const [allergyRadios, setAllergyRadios] = useState(Array(numGuests).fill(true))
   const [allergies, setAllergies] = useState(Array(numGuests).fill(""));
   const [loading, setLoading] = useState(false);
@@ -23,13 +21,6 @@ function RsvpForm() {
   function handleNumGuestsChange(event) {
     const newNumGuests = parseInt(event.target.value);
     setNumGuests(newNumGuests);
-    setFoodSelections(prevSelections => {
-      const newSelections = [...prevSelections];
-      while (newSelections.length < newNumGuests) {
-        newSelections.push("");
-      }
-      return newSelections.slice(0, newNumGuests);
-    });
 
     setFirstNames(prevFirstNames => {
       const newFirstNames = [...prevFirstNames];
@@ -62,12 +53,6 @@ function RsvpForm() {
       }
       return newAllergies.slice(0, newNumGuests);
     });
-  }
-
-  const handleFoodSelectionChange = (event, index) => {
-    const newFoodSelections = [...foodSelections];
-    newFoodSelections[index] = event.target.value;
-    setFoodSelections(newFoodSelections);
   }
 
   const handleFirstNameChange = (event, index) => {
@@ -105,8 +90,8 @@ function RsvpForm() {
     setLoading(true);
 
     // Check if any required fields are null
-    if (firstNames.includes("") || lastNames.includes("") || foodSelections.includes("")) {
-      alert("Please fill in all required fields.");
+    if (firstNames.includes("") || lastNames.includes("")) {
+      alert("Please ensure first and last name(s) are filled out before submitting.");
       setLoading(false);
       return;
     }
@@ -114,7 +99,7 @@ function RsvpForm() {
     const templateParams = {
       guestCount: numGuests,
       guestList: Array(numGuests).fill().map((_, i) => (
-        `Guest ${i + 1}: ${firstNames[i]} ${lastNames[i]}, ${foodSelections[i]}, Food allergies: ${allergies[i]}`
+        `Guest ${i + 1}: ${firstNames[i]} ${lastNames[i]}, Food allergies: ${allergies[i]}`
       )).join('\n\n')
     };
 
@@ -171,26 +156,6 @@ function RsvpForm() {
                   />
                 </div>
               </div>
-                <div className="food-selection">
-                  <div className="food-selection-text">Food Selection:</div>
-                  <div className="food-selection-dropdown">
-                    <FormControl size="small" variant="outlined" style={{ width: '100%' }}>
-                      <InputLabel id={`food-label-${i}`}>Food</InputLabel>
-                      <Select 
-                        value={foodSelections[i]}
-                        id={`food-select-${i}`}
-                        labelId={`food-label-${i}`}
-                        label="Food" 
-                        onChange={(event) => handleFoodSelectionChange(event, i)}
-                      >
-                        <MenuItem value="filet mignon">Filet Mignon</MenuItem>
-                        <MenuItem value="fish">Fish</MenuItem>
-                        <MenuItem value="chicken">Chicken</MenuItem>
-                        <MenuItem value="vegetarian">Vegetarian</MenuItem>
-                      </Select>
-                    </FormControl>  
-                  </div>
-                </div>
                 <div className="allergy-selection">
                   <div className="allergy-radio">
                     <FormControl>

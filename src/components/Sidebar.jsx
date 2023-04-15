@@ -59,7 +59,8 @@ function Sidebar({children, sidebarOpen, setSidebarOpen}) {
       </div> 
       <Slide direction="right" in={sidebarOpen} mountOnEnter unmountOnExit>
         <div className="sidebar">
-          {menuItem.map((item, index)=>(
+          <div className="links-container">
+            {menuItem.map((item, index)=>(
               <NavLink 
                 to={item.path} 
                 key={index} 
@@ -70,6 +71,7 @@ function Sidebar({children, sidebarOpen, setSidebarOpen}) {
                 <div className="link-text">{item.name}</div>
               </NavLink>
             ))}
+          </div>
         </div>
       </Slide>
       {children}

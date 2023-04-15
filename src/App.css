@@ -1,6 +1,5 @@
 html, body, :root {
-  min-height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 *{
@@ -11,7 +10,6 @@ html, body, :root {
 
 .App {
   min-width: 100vw;
-  min-height: 100vh;
 }
 
 .side-bar {

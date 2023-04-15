@@ -64,25 +64,12 @@
     height: 4vh;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 5%;
 }
 
 .name-field {
     width: 40%;
     padding-top: 5%;
-}
-
-.food-selection {
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 15%;
-}
-
-.food-selection-dropdown {
-    width: 40%;
-    height: 100%;
 }
 
 .form-groups button {

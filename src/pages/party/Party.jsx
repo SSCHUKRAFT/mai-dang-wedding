@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './party.css';
-import Background from '../../assets/page-backgrounds/rsvp-bg.jpg'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PartyMember from '../../components/PartyMember';
@@ -25,20 +24,10 @@ const Party = () => {
     console.log(newParty)
     setParty(newParty);
   }
-  
-  const bgStyles = {
-    backgroundImage: `url(${Background})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    width: '100vw',
-    height: '100vh',
-    scale: '1',
-    position: 'absolute'
-  };
 
   return (
     <div className="party">
-      <div style={bgStyles}>
+      <div className="party-bg">
         <div className="party-dark-filter" />
         <div className="party-introducing">Introducing...</div>
         <div className="party-title">The Wedding Party!</div>
