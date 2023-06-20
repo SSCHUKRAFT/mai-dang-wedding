@@ -89,32 +89,33 @@ function RsvpForm() {
     event.preventDefault();
     setLoading(true);
 
-    // Check if any required fields are null
-    if (firstNames.includes("") || lastNames.includes("")) {
-      alert("Please ensure first and last name(s) are filled out before submitting.");
-      setLoading(false);
-      return;
-    }
+    // // Check if any required fields are null
+    // if (firstNames.includes("") || lastNames.includes("")) {
+    //   alert("Please ensure first and last name(s) are filled out before submitting.");
+    //   setLoading(false);
+    //   return;
+    // }
 
-    const templateParams = {
-      guestCount: numGuests,
-      guestList: Array(numGuests).fill().map((_, i) => (
-        `Guest ${i + 1}: ${firstNames[i]} ${lastNames[i]}, Food allergies: ${allergies[i]}`
-      )).join('\n\n')
-    };
+    // const templateParams = {
+    //   guestCount: numGuests,
+    //   guestList: Array(numGuests).fill().map((_, i) => (
+    //     `Guest ${i + 1}: ${firstNames[i]} ${lastNames[i]}, Food allergies: ${allergies[i]}`
+    //   )).join('\n\n')
+    // };
 
 
-    emailjs.send('service_yuq2dkl', 'template_zj5oroc', templateParams, 'euCgll_J6Ylx_2x2d')
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        alert("Your RSVP was successfully received. We can't wait to see you there!" );
-      }, (error) => {
-        console.log('FAILED...', error);
-        alert('Failed to submit RSVP. Please try again.');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    // emailjs.send('service_yuq2dkl', 'template_zj5oroc', templateParams, 'euCgll_J6Ylx_2x2d')
+    //   .then((response) => {
+    //     console.log('SUCCESS!', response.status, response.text);
+    //     alert("Your RSVP was successfully received. We can't wait to see you there!" );
+    //   }, (error) => {
+    //     console.log('FAILED...', error);
+    //     alert('Failed to submit RSVP. Please try again.');
+    //   })
+    //   .finally(() => {
+    //     setLoading(false);
+    //   });
+    alert("Sorry, but the time to RSVP has expired. Feel free to contact Vu at (585) 766-4899 or Anh at (585) 978-0029")
   }
 
   return (
